@@ -4,6 +4,7 @@ import { FontLoader } from "three/examples/jsm/loaders/FontLoader";
 import { TextGeometry } from "three/examples/jsm/geometries/TextGeometry";
 
 import { GLTFLoader } from "three/addons/loaders/GLTFLoader.js";
+import { PointLight } from "three";
 
 const startingCameraPosition = new THREE.Vector3(0, 0, 5);
 const initialOrbitTarget = new THREE.Vector3(0, 0, 0);
@@ -34,13 +35,23 @@ scene.add(cone);
 cone.position.x = 4;
 cone.position.z = 4;
 
-const insideLight = new THREE.PointLight(0xff0000, 1, 100);
-insideLight.position.set(0, 0, 0);
-scene.add(insideLight);
+const ambientLight = new THREE.AmbientLight(0xffffff, 0.01);
+scene.add(ambientLight);
+
+const pointLight = new THREE.PointLight(0xffffff, 0.5, 100);
+pointLight.position.set(5, 1, 6);
+
+const pointLightHelper = new THREE.PointLightHelper(pointLight);
+scene.add(pointLight);
+scene.add(pointLightHelper);
 
 const directionalLight = new THREE.DirectionalLight(0xffffff, 0.5);
-directionalLight.position.z = 3;
+directionalLight.position.set(1, 10, 5);
+directionalLight.target.position.set(0, 0, 0);
 scene.add(directionalLight);
+
+var lightHelper = new THREE.PointLightHelper(directionalLight);
+scene.add(lightHelper);
 
 camera.position.z = 5;
 
@@ -48,6 +59,8 @@ const controls = new OrbitControls(camera, renderer.domElement);
 controls.enableDamping = true;
 controls.dampingFactor = 0.25;
 controls.enableZoom = true;
+
+controls.update();
 
 const raycaster = new THREE.Raycaster();
 const mouse = new THREE.Vector2();
@@ -83,6 +96,7 @@ modelLoader.load("room_jonar.glb", (gltf) => {
   gltf.scene.position.x = 2;
   gltf.scene.position.y = -1;
   gltf.scene.position.z = 1.9;
+  gltf.scene.sca;
 
   scene.add(gltf.scene);
 });
