@@ -1,38 +1,65 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+    />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Jonar</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tween.js/18.6.4/tween.umd.js"></script>
 
     <script type="importmap">
-  {
-    "imports": {
-      "three": "https://cdn.jsdelivr.net/npm/three@0.163.0/build/three.module.js",
-      "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.163.0/examples/jsm/",
-      "three/examples/jsm/controls/OrbitControls": "https://cdn.jsdelivr.net/npm/three@0.163.0/examples/jsm/controls/OrbitControls.js",
-      "three/examples/jsm/loaders/FontLoader": "https://cdn.jsdelivr.net/npm/three@0.163.0/examples/jsm/loaders/FontLoader.js",
-      "three/examples/jsm/geometries/TextGeometry": "https://cdn.jsdelivr.net/npm/three@0.163.0/examples/jsm/geometries/TextGeometry.js"
-    }
-  }
-</script>
+      {
+        "imports": {
+          "three": "https://cdn.jsdelivr.net/npm/three@0.163.0/build/three.module.js",
+          "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.163.0/examples/jsm/",
+          "three/examples/jsm/controls/OrbitControls": "https://cdn.jsdelivr.net/npm/three@0.163.0/examples/jsm/controls/OrbitControls.js",
+          "three/examples/jsm/loaders/FontLoader": "https://cdn.jsdelivr.net/npm/three@0.163.0/examples/jsm/loaders/FontLoader.js",
+          "three/examples/jsm/geometries/TextGeometry": "https://cdn.jsdelivr.net/npm/three@0.163.0/examples/jsm/geometries/TextGeometry.js",
+          "three/addons/loaders/GLTFLoader": "https://cdn.jsdelivr.net/npm/three@0.163/addons/loaders/GLTFLoader.js"
+        }
+      }
+    </script>
+    <style>
+      body {
+        overflow: hidden;
+        margin: 0; /* Ensures there is no space around the sides of the page */
+      }
+      .buttons {
+        position: absolute;
+      }
+      button {
+        top: 10px;
+        left: 10px;
+        border: none;
+        background-color: rgba(0, 255, 255, 0.5);
+        color: white;
+        padding: 10px 20px;
+        font-size: 16px;
+        cursor: pointer;
+        box-shadow: 0 0 10px rgba(0, 255, 255, 0.7),
+          0 0 20px rgba(0, 255, 255, 0.7);
+        border-radius: 5px;
+        z-index: 100; /* Makes sure the button is above all canvas elements */
+      }
+      button:hover {
+        background-color: rgba(0, 255, 255, 0.7);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="buttons">
+      <button id="moveToConeButton">Go to Cone</button>
+      <button id="goBackButton">Go back</button>
+    </div>
 
-
-
-</head>
-<body>
-
-
-<script type="module" src="main.js">
-</script>
-</body>
-<style>
-  
-    body{
+    <script type="module" src="main.js"></script>
+  </body>
+  <style>
+    body {
       overflow: hidden;
     }
-  
-</style>
+  </style>
 </html>
